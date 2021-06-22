@@ -1,10 +1,10 @@
 from tkinter import *
 from tkinter import ttk 
-from Proveedores.cuadro1 import *
-from Proveedores.cuadro2 import *
-from Proveedores.cuadro3 import *
-from Proveedores.cuadro4 import *
-from Proveedores.cuadro5 import *
+from Proveedores.form_empresa import *
+from Proveedores.form_domicilio import *
+from Proveedores.form_datos_bancarios import *
+from Proveedores.form_contacto import *
+from Proveedores.form_observaciones import *
 from Proveedores.style import estilo
 
 def borrar(l1, l2, l3, l4, l5):
@@ -39,9 +39,7 @@ def agregarProv(frame):
     dic3 = cuadro3(menu3)
     dic4 = cuadro4(menu4)
     dic5 = cuadro5(menu5)
-
-    print("hola")
-
+    
     b = ttk.Button(frame, text = "Borrar todo", style='W.TButton', command = lambda:borrar(dic1.get("borrar"), dic2.get("borrar"), dic3.get("borrar"), dic4.get("borrar"), dic5.get("borrar")))
     b.place(relx = 0.52, rely = 0.90, relwidth = 0.1, relheight = 0.08)
 

@@ -24,6 +24,7 @@ def estilo(root):
     style.map('TCombobox', foreground=[('readonly', 'white')])
  
     style.configure('TButton', background = '#998E8E', foreground = 'white')
+    style.map('TButton', background=[('active', '#A89D9D')])
 
     style.configure('W.TButton', background='#6D6767')
     style.map('W.TButton', background=[('active', '#807878')])
