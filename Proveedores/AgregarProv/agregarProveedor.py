@@ -1,10 +1,10 @@
 from tkinter import *
 from tkinter import ttk 
-from Proveedores.form_empresa import *
-from Proveedores.form_domicilio import *
-from Proveedores.form_datos_bancarios import *
-from Proveedores.form_contacto import *
-from Proveedores.form_observaciones import *
+from Proveedores.AgregarProv.form_empresa import *
+from Proveedores.AgregarProv.form_domicilio import *
+from Proveedores.AgregarProv.form_datos_bancarios import *
+from Proveedores.AgregarProv.form_contacto import *
+from Proveedores.AgregarProv.form_observaciones import *
 
 def borrar(l1, l2, l3, l4, l5):
     l = l1 + l2 + l3 + l4 

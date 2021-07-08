@@ -1,8 +1,6 @@
 from tkinter import *
 from tkinter import ttk 
 
-
-
 def cuadro1(menu1):
 
     nomFis = StringVar()

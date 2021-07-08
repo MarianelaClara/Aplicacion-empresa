@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import ttk
-from Proveedores.agregarProveedor import agregarProv
+from Proveedores.AgregarProv.agregarProveedor import agregarProv
 from style import estilo
 
 def porciento(x,y):

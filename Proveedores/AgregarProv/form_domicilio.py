@@ -1,9 +1,6 @@
 from tkinter import *
 from tkinter import ttk 
 
-
-
-
 def cuadro2(menu2):
 
     domicilio = StringVar()
