@@ -1,6 +1,8 @@
 from tkinter import *
 from tkinter import ttk 
-from Proveedores.style import *
+
+
+
 
 def cuadro2(menu2):
 
@@ -11,11 +13,11 @@ def cuadro2(menu2):
     pais = StringVar()
 
     ttk.Label(menu2, text = "Domicilio:").place(relx = 0.02, rely = 0.07, relheight = 0.15)
-    dom = Entry(menu2, textvariable = domicilio)
+    dom = ttk.Entry(menu2, textvariable = domicilio)
     dom.place(relx = 0.19 , rely = 0.07, relwidth = 0.7, relheight = 0.15)
     
     ttk.Label(menu2, text = "Código postal:").place(relx = 0.02, rely = 0.425, relheight = 0.15)
-    cp = Entry(menu2, textvariable = codPostal)
+    cp = ttk.Entry(menu2, textvariable = codPostal)
     cp.place(relx = 0.24, rely = 0.425, relwidth = 0.14, relheight = 0.15)
 
     ttk.Button(menu2, text = "Buscar").place(relx = 0.40, rely = 0.41, relwidth = 0.13, relheight = 0.2)

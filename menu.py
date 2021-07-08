@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from Proveedores.agregarProveedor import agregarProv
-from Proveedores.style import *
+from style import estilo
 
 def porciento(x,y):
     return (x*y)//100

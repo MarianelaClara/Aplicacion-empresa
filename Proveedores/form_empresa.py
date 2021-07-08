@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import ttk 
-from Proveedores.style import *
+
 
 
 def cuadro1(menu1):
