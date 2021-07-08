@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from Proveedores.AgregarProv.agregarProveedor import agregarProv
+from Proveedores.VerProv.verProveedor import verProv
 from style import estilo
 
 def porciento(x,y):
@@ -28,6 +29,7 @@ frame1.pack(fill = "both")
 notebook.add(frame0, text = "Ver proveedores")
 notebook.add(frame1, text = "Agregar proveedor")
 
+verProv(frame0)
 agregarProv(frame1)
 
 root.mainloop()
