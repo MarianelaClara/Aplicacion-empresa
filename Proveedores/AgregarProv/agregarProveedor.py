@@ -5,16 +5,7 @@ from Proveedores.AgregarProv.form_domicilio import *
 from Proveedores.AgregarProv.form_datos_bancarios import *
 from Proveedores.AgregarProv.form_contacto import *
 from Proveedores.AgregarProv.form_observaciones import *
-
-def borrar(l1, l2, l3, l4, l5):
-    l = l1 + l2 + l3 + l4 
-
-    for x in l:
-        if(x.get() != ""):
-            x.delete(0, END)
-    
-    if(l5[0].get('1.0', END) != ""):
-        l5[0].delete("1.0","end")
+from Proveedores.AgregarProv.borrarGuardar import *
 
 def agregarProv(frame):
     menu1 = LabelFrame(frame, text = "EMPRESA", background = "#4B4C56", foreground = "#ECECEF")
@@ -38,10 +29,13 @@ def agregarProv(frame):
     dic4 = cuadro4(menu4)
     dic5 = cuadro5(menu5)
     
-    b = ttk.Button(frame, text = "Borrar todo", command = lambda:borrar(dic1.get("borrar"), dic2.get("borrar"), dic3.get("borrar"), dic4.get("borrar"), dic5.get("borrar")))
+    b = ttk.Button(frame, text = "Borrar todo", command = lambda:borrar(dic1.get("borrar"), dic2.get("borrar"), 
+    dic3.get("borrar"), dic4.get("borrar"), dic5.get("borrar")))
     b.place(relx = 0.52, rely = 0.90, relwidth = 0.1, relheight = 0.08)
 
-    ttk.Button(frame, text = "Guardar").place(relx = 0.891, rely = 0.90, relwidth = 0.08, relheight = 0.08)
+    g = ttk.Button(frame, text = "Guardar", command = lambda:guardar(dic1.get("guardar"), dic2.get("guardar"),
+    dic3.get("guardar"),dic4.get("guardar"), dic5.get("guardar")))
+    g.place(relx = 0.891, rely = 0.90, relwidth = 0.08, relheight = 0.08)
     
     
 
