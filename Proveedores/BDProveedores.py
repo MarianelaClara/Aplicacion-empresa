@@ -43,4 +43,3 @@ class Proveedores:
         self.cnn.commit()    
         cur.close()  
 
-

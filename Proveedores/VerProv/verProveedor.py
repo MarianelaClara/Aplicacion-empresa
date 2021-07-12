@@ -3,7 +3,6 @@ from tkinter import ttk
 from Proveedores.BDProveedores import *
 
 def verProv(frame):
-    global tv
     tv = ttk.Treeview(frame, columns = ("col1", "col2", "col3", "col4", "col5"))
 
     tv.column("#0", width = 7, anchor = CENTER)
