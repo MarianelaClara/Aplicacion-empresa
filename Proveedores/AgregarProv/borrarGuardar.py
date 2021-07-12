@@ -41,7 +41,7 @@ def controlar_Tel_Movil(telefono, movil):
     error()
     
 def controlar_Email(email):
-    if(email != ""):
+    if(email):
         if(email.find("@") == -1):
             error()
     return 1
@@ -72,16 +72,18 @@ def guardar(l1, l2, l3, l4, l5):
     idFiscal = l1[1].get()
     nomFiscal = l1[2].get()
     nomComer = l1[3].get()
-    if(idFiscal != "" and nomFiscal != "" and nomComer != ""): #Entrys obligatorios a llenar.
-        if(controlar_IdFiscal(listaDesplegable, idFiscal)):
-            if(controlar_Tel_Movil(l4[0].get(), l4[1].get())):
-                if(controlar_Email(l4[3].get())):
-                    listaActualizada = poner_NULL(l2 + l3 + l4 + l5)
-                    proveedor = Proveedores()
-                    proveedor.insertar_proveedor(idFiscal, nomFiscal, nomComer, listaActualizada[0], listaActualizada[1], 
-                    listaActualizada[2], listaActualizada[3], listaActualizada[4], listaActualizada[5], 
-                    listaActualizada[6], listaActualizada[7], listaActualizada[8], listaActualizada[9],
-                    listaActualizada[10], listaActualizada[11])
-                     
+    if(idFiscal and nomFiscal and nomComer): #Entrys obligatorios a llenar.
+        proveedor = Proveedores()
+        if(not(proveedor.buscar_proveedor(idFiscal))):
+            if(controlar_IdFiscal(listaDesplegable, idFiscal)):
+                if(controlar_Tel_Movil(l4[0].get(), l4[1].get())):
+                    if(controlar_Email(l4[3].get())):
+                        listaActualizada = poner_NULL(l2 + l3 + l4 + l5)
+                        proveedor.insertar_proveedor(idFiscal, nomFiscal, nomComer, listaActualizada[0], listaActualizada[1], 
+                        listaActualizada[2], listaActualizada[3], listaActualizada[4], listaActualizada[5], 
+                        listaActualizada[6], listaActualizada[7], listaActualizada[8], listaActualizada[9],
+                        listaActualizada[10], listaActualizada[11])
+        else:
+            error()                   
     else:
         error()

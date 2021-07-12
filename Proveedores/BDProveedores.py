@@ -13,7 +13,14 @@ class Proveedores:
             aux=aux + str(row) + "\n"
         return aux
     
- 
+
+    def buscar_proveedor(self, Id):
+        cur = self.cnn.cursor()
+        sql= "SELECT * FROM Proveedores WHERE IdFiscal = '{}'".format(Id)
+        cur.execute(sql)
+        datos = cur.fetchone()
+        cur.close()    
+        return datos
     
     def insertar_proveedor(self, IdFiscal, NomFiscal, NomComercial, Domicilio, CodPostal, Pais, 
         Provincia, Ciudad, CCC, Banco, Telefono, Movil, PersContacto, EMail, Observaciones):
@@ -26,8 +33,9 @@ class Proveedores:
 
         cur.execute(sql,(IdFiscal, NomFiscal, NomComercial, Domicilio, CodPostal, Pais, 
         Provincia, Ciudad, CCC, Banco, Telefono, Movil, PersContacto, EMail, Observaciones))
-
+        
         self.cnn.commit()    
         cur.close()  
+
 
 
