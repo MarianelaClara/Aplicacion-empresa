@@ -63,7 +63,7 @@ def poner_NULL(lista):
                 l = l + [None]
             else:
                 l = l + [valor]
-
+    print(l)
     return l
 
 
