@@ -21,6 +21,7 @@ def verProv(frame):
     
     tv.place(relx = 0.05, rely = 0.05, relwidth = 0.9, relheight = 0.9)
 
+    #Se cargan en el Treeview los datos de proveedores anteriormente guardados.
     proveedor = Proveedores()
     datos = proveedor.consultar_proveedores()
     for row in datos:
