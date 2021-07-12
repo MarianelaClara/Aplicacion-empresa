@@ -66,6 +66,7 @@ def poner_NULL(lista):
 
     return l
 
+
 def guardar(l1, l2, l3, l4, l5):
 
     listaDesplegable = l1[0].get()
@@ -79,10 +80,12 @@ def guardar(l1, l2, l3, l4, l5):
                 if(controlar_Tel_Movil(l4[0].get(), l4[1].get())):
                     if(controlar_Email(l4[3].get())):
                         listaActualizada = poner_NULL(l2 + l3 + l4 + l5)
+
                         proveedor.insertar_proveedor(idFiscal, nomFiscal, nomComer, listaActualizada[0], listaActualizada[1], 
                         listaActualizada[2], listaActualizada[3], listaActualizada[4], listaActualizada[5], 
                         listaActualizada[6], listaActualizada[7], listaActualizada[8], listaActualizada[9],
                         listaActualizada[10], listaActualizada[11])
+
         else:
             error()                   
     else:

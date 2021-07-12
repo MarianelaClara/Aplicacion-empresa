@@ -7,12 +7,18 @@ class Proveedores:
         passwd="nena123+", database="Aplicacion")
 
     def __str__(self):
-        datos=self.consulta_paises()
+        datos=self.consultar_proveedores()
         aux=""
         for row in datos:
             aux=aux + str(row) + "\n"
         return aux
     
+    def consultar_proveedores(self):
+        cur = self.cnn.cursor()
+        cur.execute("SELECT * FROM Proveedores")
+        datos = cur.fetchall()
+        cur.close()    
+        return datos
 
     def buscar_proveedor(self, Id):
         cur = self.cnn.cursor()
@@ -36,6 +42,5 @@ class Proveedores:
         
         self.cnn.commit()    
         cur.close()  
-
 
 
