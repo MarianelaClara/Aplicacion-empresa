@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk 
 
-class Formulario1():
+class Formulario_empresa():
        
     def __init__(self, frame):
         self.frame = frame
