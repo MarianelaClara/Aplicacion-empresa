@@ -27,7 +27,7 @@ def controlar_id_fiscal(lista_desplegable, id_fiscal):
 
 def controlar_campo_numerico(campo):
     if(not(campo == '')):
-        if(not(campo.isnumeric())):
+        if(not((campo.strip()).isnumeric())):
             raise TipoDeDatoNoValido()
 
 def controlar_email(email):
