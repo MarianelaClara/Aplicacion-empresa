@@ -1,25 +1,30 @@
 from tkinter import *
 from tkinter import ttk 
 
-def cuadro1(menu1):
+class Formulario1():
+       
+    def __init__(self, frame):
+        self.frame = frame
+        self.create_widgets()
 
-    ttk.Label(menu1, text = "Identificación fiscal:").place(relx = 0.02, rely = 0.07, relheight = 0.15)
-    opciones = ["C.U.I.T", "D.N.I"]
-    lista_desplegable = ttk.Combobox(menu1, state = 'readonly', justify='center')
-    
-    lista_desplegable['values'] = opciones
-    lista_desplegable.current(0)
-    lista_desplegable.place(relx = 0.35, rely = 0.07, relwidth = 0.2, relheight = 0.15)
-    
-    id_fiscal = ttk.Entry(menu1)
-    id_fiscal.place(relx = 0.6, rely = 0.07, relwidth = 0.3, relheight = 0.15)
-
-    ttk.Label(menu1, text = "Nombre fiscal:").place(relx = 0.02, rely = 0.425, relheight = 0.15)
-    nom_fiscal = ttk.Entry(menu1)
-    nom_fiscal.place(relx = 0.26, rely = 0.425, relwidth = 0.3, relheight = 0.15)
-
-    ttk.Label(menu1, text = "Nombre comercial:").place(relx = 0.02, rely = 0.78, relheight = 0.15)
-    nom_comer = ttk.Entry(menu1)
-    nom_comer.place(relx = 0.31, rely = 0.78, relwidth = 0.3, relheight = 0.15)
+    def create_widgets(self):
+        ttk.Label(self.frame, text = "Identificación fiscal:").place(relx = 0.02, rely = 0.07, relheight = 0.15)
+        opciones = ["C.U.I.T", "D.N.I"]
+        lista_desplegable = ttk.Combobox(self.frame, state = 'readonly', justify='center')
         
-    return [lista_desplegable, id_fiscal, nom_fiscal, nom_comer]
+        lista_desplegable['values'] = opciones
+        lista_desplegable.current(0)
+        lista_desplegable.place(relx = 0.35, rely = 0.07, relwidth = 0.2, relheight = 0.15)
+        
+        id_fiscal = ttk.Entry(self.frame)
+        id_fiscal.place(relx = 0.6, rely = 0.07, relwidth = 0.3, relheight = 0.15)
+
+        ttk.Label(self.frame, text = "Nombre fiscal:").place(relx = 0.02, rely = 0.425, relheight = 0.15)
+        nombre_fiscal = ttk.Entry(self.frame)
+        nombre_fiscal.place(relx = 0.26, rely = 0.425, relwidth = 0.3, relheight = 0.15)
+
+        ttk.Label(self.frame, text = "Nombre comercial:").place(relx = 0.02, rely = 0.78, relheight = 0.15)
+        nombre_comercial = ttk.Entry(self.frame)
+        nombre_comercial.place(relx = 0.31, rely = 0.78, relwidth = 0.3, relheight = 0.15)
+            
+        return [lista_desplegable, id_fiscal, nombre_fiscal, nombre_comercial]

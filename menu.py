@@ -1,4 +1,5 @@
 from tkinter import ttk
+from Proveedores.AgregarProv.agregarProveedor import *
 
 class Ventana():
        
@@ -12,12 +13,14 @@ class Ventana():
         notebook = ttk.Notebook()
         notebook.pack(padx=10, pady=10, fill ="both")
             
-        frame0 = ttk.Frame(notebook, width = self.x, height = self.y)
-        frame0.pack(fill = "both")
-        frame1 = ttk.Frame(notebook, width = self.x, height = self.y)
-        frame1.pack(fill = "both")
+        pestaña0 = ttk.Frame(notebook, width = self.x, height = self.y)
+        pestaña0.pack(fill = "both")
+        pestaña1 = ttk.Frame(notebook, width = self.x, height = self.y)
+        pestaña1.pack(fill = "both")
 
-        notebook.add(frame0, text = "Ver proveedores")
-        notebook.add(frame1, text = "Agregar proveedor")
+        notebook.add(pestaña0, text = "Ver proveedores")
+        notebook.add(pestaña1, text = "Agregar proveedor")
+
+        agregar_proveedor = AgregarProveedor(pestaña1)
             
      
