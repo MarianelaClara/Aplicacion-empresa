@@ -1,18 +1,6 @@
 from tkinter import *
 from tkinter import ttk 
-from tkinter import messagebox
-from Proveedores.BDProveedores import *
-from Proveedores.VerProv.verProveedor import *
-
-def borrar(l1, l2, l3, l4, l5):
-    l = l1 + l2 + l3 + l4 
-
-    for x in l:
-        if(x.get() != ""):
-            x.delete(0, END)
-    
-    if(l5[0].get('1.0', END) != ""):
-        l5[0].delete("1.0","end")
+from Proveedores.Ver_Proveedores.ver_proveedor import *
 
 def error():
     messagebox.showerror(message="Error", title="Error")
@@ -66,28 +54,31 @@ def poner_NULL(lista):
                 l = l + [valor]
     return l
 
+class Mostrar_treeview(Ver_proveedor):
 
-def guardar(l1, l2, l3, l4, l5):
+    def __init__(self, frame):
+        Ver_proveedor.__init__(self, frame)
 
-    listaDesplegable = l1[0].get()
-    idFiscal = l1[1].get()
-    nomFiscal = l1[2].get()
-    nomComer = l1[3].get()
-    if(idFiscal and nomFiscal and nomComer): #Entrys obligatorios a llenar.
-        proveedor = Proveedores()
-        if(not(proveedor.buscar_proveedor(idFiscal))):
-            if(controlar_IdFiscal(listaDesplegable, idFiscal)):
-                if(controlar_Tel_Movil(l4[0].get(), l4[1].get())):
-                    if(controlar_Email(l4[3].get())):
-                        listaActualizada = poner_NULL(l2 + l3 + l4 + l5)
+    def controlar(self, l1, l2, l3, l4, l5):
+        listaDesplegable = l1[0].get()
+        idFiscal = l1[1].get()
+        nomFiscal = l1[2].get()
+        nomComer = l1[3].get()
+        if(idFiscal and nomFiscal and nomComer): #Entrys obligatorios a llenar.
+            proveedor = Proveedores()
+            if(not(proveedor.buscar_proveedor(idFiscal))):
+                if(controlar_IdFiscal(listaDesplegable, idFiscal)):
+                    if(controlar_Tel_Movil(l4[0].get(), l4[1].get())):
+                        if(controlar_Email(l4[3].get())):
+                            listaActualizada = poner_NULL(l2 + l3 + l4 + l5)
 
-                        proveedor.insertar_proveedor(idFiscal, nomFiscal, nomComer, listaActualizada[0], listaActualizada[1], 
-                        listaActualizada[2], listaActualizada[3], listaActualizada[4], listaActualizada[5], 
-                        listaActualizada[6], listaActualizada[7], listaActualizada[8], listaActualizada[9],
-                        listaActualizada[10], listaActualizada[11])
+                            proveedor.insertar_proveedor(idFiscal, nomFiscal, nomComer, listaActualizada[0], listaActualizada[1], 
+                            listaActualizada[2], listaActualizada[3], listaActualizada[4], listaActualizada[5], 
+                            listaActualizada[6], listaActualizada[7], listaActualizada[8], listaActualizada[9],
+                            listaActualizada[10], listaActualizada[11])
 
-                        agregar_nuevo_proveedor()
+                            self.llenar_datos()
+            else:
+                error()                   
         else:
-            error()                   
-    else:
-        error()
+            error()

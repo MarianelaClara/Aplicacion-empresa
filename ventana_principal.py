@@ -1,13 +1,12 @@
 from tkinter import ttk
-from Proveedores.AgregarProv.agregarProveedor import *
+from Proveedores.Agregar_Proveedor.agregar_proveedor import *
 
 class Ventana():
        
     def __init__(self, x, y):
         self.x = x
         self.y = y
-        self.create_widgets()
-        
+        self.create_widgets() 
 
     def create_widgets(self):
         notebook = ttk.Notebook()
@@ -21,6 +20,8 @@ class Ventana():
         notebook.add(pestaña0, text = "Ver proveedores")
         notebook.add(pestaña1, text = "Agregar proveedor")
 
-        agregar_proveedor = AgregarProveedor(pestaña1)
+        ver_proveedor = Ver_proveedor(pestaña0)  
+        agregar_proveedor = Agregar_proveedor(pestaña1, pestaña0)
+
             
      

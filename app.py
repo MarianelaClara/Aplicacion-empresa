@@ -1,5 +1,5 @@
 from tkinter import *
-from ventanaPrincipal import *
+from ventana_principal import *
 from style import *
 
 def porciento(x,y):
