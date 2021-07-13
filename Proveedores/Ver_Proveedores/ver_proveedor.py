@@ -4,6 +4,8 @@ from Proveedores.bd_proveedores import *
 
 class Ver_proveedor():
 
+    proveedor = Proveedores()
+
     def __init__(self, frame):
         self.frame = frame
         self.create_widgets()
@@ -24,14 +26,18 @@ class Ver_proveedor():
         self.tv.heading("col2", text = "Nombre comercial", anchor = CENTER)
         self.tv.heading("col3", text = "Móvil", anchor = CENTER)
         self.tv.heading("col4", text = "E-mail", anchor = CENTER)
-        self.tv.heading("col5", text = "C.U.I.T.", anchor = CENTER)
+        self.tv.heading("col5", text = "D.N.I./C.U.I.T.", anchor = CENTER)
         
         self.tv.place(relx = 0.05, rely = 0.05, relwidth = 0.9, relheight = 0.9)
 
     def llenar_datos(self): #Se cargan en el Treeview los datos de proveedores anteriormente guardados.
-        proveedor = Proveedores()
-        datos = proveedor.consultar_proveedores()
+        datos = self.proveedor.consultar_proveedores()
         for row in datos:
             self.tv.insert("", END, text = row[0], values = (row[1], row[2], row[3], row[4], row[5]))
+    
+    def mostrar_proveedor(self):
+        for item in self.tv.get_children():
+            self.tv.delete(item)
+        self.llenar_datos()
 
 

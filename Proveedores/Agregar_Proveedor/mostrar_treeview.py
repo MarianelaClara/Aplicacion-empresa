@@ -9,8 +9,7 @@ def controlar_campos_obligatorios(campo1, campo2, campo3):
     if(campo1 == '' or campo2 == '' or campo3 == ''):
         raise CampoObligatorio()
 
-def controlar_proveedor_existente(id):
-    proveedor = Proveedores()
+def controlar_proveedor_existente(id, proveedor):
     dato = proveedor.buscar_proveedor(id)
     if(dato):
         raise ProveedorYaExistente()
@@ -31,7 +30,7 @@ def controlar_campo_numerico(campo):
         if(not(campo.isnumeric())):
             raise TipoDeDatoNoValido()
 
-def controlar_Email(email):
+def controlar_email(email):
     if(email):
         if(email.find("@") == -1):
             raise ErrorDeSintaxis()
@@ -64,21 +63,21 @@ class Mostrar_treeview(Ver_proveedor):
         id_fiscal = l1[1].get()
         nombre_fiscal = l1[2].get()
         nombre_comercial = l1[3].get()
-        
         try:
             controlar_campos_obligatorios(id_fiscal, nombre_fiscal, nombre_comercial)
-            controlar_proveedor_existente(id_fiscal)
+            controlar_proveedor_existente(id_fiscal, self.proveedor)
             controlar_id_fiscal(lista_desplegable, id_fiscal)
-            controlar_campo_numerico(l4[0].get(), l4[1].get())
+            controlar_campo_numerico(l4[1].get())
+            controlar_campo_numerico(l4[0].get())
             controlar_email(l4[3].get())
             lista_actualizada = poner_NULL(l2 + l3 + l4 + l5)
 
-            proveedor.insertar_proveedor(id_fiscal, nombre_fiscal, nombre_comercial, lista_actualizada[0], 
+            self.proveedor.insertar_proveedor(id_fiscal, nombre_fiscal, nombre_comercial, lista_actualizada[0], 
             lista_actualizada[1], lista_actualizada[2], lista_actualizada[3], lista_actualizada[4], lista_actualizada[5], 
             lista_actualizada[6], lista_actualizada[7], lista_actualizada[8], lista_actualizada[9],
             lista_actualizada[10], lista_actualizada[11])
 
-            self.llenar_datos()
+            self.mostrar_proveedor()
 
         except TipoDeDatoNoValido:
             messagebox.showerror(message="Sintaxis incorrecta, use números.", title="Error")
