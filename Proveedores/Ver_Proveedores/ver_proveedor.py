@@ -33,7 +33,7 @@ class Ver_proveedor():
     def llenar_datos(self): #Se cargan en el Treeview los datos de proveedores anteriormente guardados.
         datos = self.proveedor.consultar_proveedores()
         for row in datos:
-            self.tv.insert("", END, text = row[0], values = (row[1], row[2], row[3], row[4], row[5]))
+            self.tv.insert("", END, text = row[0], values = (row[2], row[3], row[12], row[14], row[1]))
     
     def mostrar_proveedor(self):
         for item in self.tv.get_children():
