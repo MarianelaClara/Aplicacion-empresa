@@ -26,3 +26,5 @@ def estilo(root):
  
     style.configure('TButton', background = '#6D6767', foreground = 'white')
     style.map('TButton', background=[('active', '#807878')])
+
+    style.configure('TMessagebox', foreground = "red")

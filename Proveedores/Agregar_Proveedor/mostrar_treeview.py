@@ -2,8 +2,8 @@ from tkinter import *
 from tkinter import ttk 
 from Proveedores.Ver_Proveedores.ver_proveedor import *
 from excepciones import *
+from messagebox import *
 from Proveedores.bd_proveedores import *
-from tkinter import messagebox
 
 def controlar_campos_obligatorios(campo1, campo2, campo3):
     if(campo1 == '' or campo2 == '' or campo3 == ''):
@@ -54,9 +54,11 @@ def poner_NULL(lista):
     return l
 
 class Mostrar_treeview(Ver_proveedor):
-
-    def __init__(self, frame):
-        Ver_proveedor.__init__(self, frame)
+   
+    def __init__(self, frame0, frame1):
+        Ver_proveedor.__init__(self, frame0)
+        self.frame1 = frame1
+        self.messagebox = Messagebox(self.frame1)
 
     def controlar(self, l1, l2, l3, l4, l5):
         lista_desplegable = l1[0].get()
@@ -80,12 +82,12 @@ class Mostrar_treeview(Ver_proveedor):
             self.mostrar_proveedor()
 
         except TipoDeDatoNoValido:
-            messagebox.showerror(message="Sintaxis incorrecta, use números.", title="Error")
+            self.messagebox.create_widgets("Sintaxis incorrecta, use números.", "Error")
         except ErrorDeSintaxis:
-            messagebox.showerror(message="Error de sintaxis.", title="Error")
+            self.messagebox.create_widgets("Error de sintaxis.", "Error")
         except ProveedorYaExistente:
-            messagebox.showerror(message="El proveedor ya existe.", title="Error")
+            self.messagebox.create_widgets("El proveedor ya existe.", "Error")
         except CampoObligatorio:
-            messagebox.showerror(message="Falta llenar un campo obligatorio.", title="Error")
+            self.messagebox.create_widgets("Falta llenar un campo obligatorio.", "Error")
 
     
