@@ -1,40 +1,40 @@
 from tkinter import *
 from tkinter import ttk 
 from Proveedores.Ver_Proveedores.ver_proveedor import *
+from excepciones import *
+from Proveedores.bd_proveedores import *
+from tkinter import messagebox
 
-def error():
-    messagebox.showerror(message="Error", title="Error")
-    return 0
+def controlar_campos_obligatorios(campo1, campo2, campo3):
+    if(campo1 == '' or campo2 == '' or campo3 == ''):
+        raise CampoObligatorio()
 
-def controlar_IdFiscal(listaDesplegable, idFiscal):
-    if(listaDesplegable == 'D.N.I'):
-        if(not(len(idFiscal) == 10 and idFiscal[2] == '.' and idFiscal[6] == '.')):
-            error()
-            if(not((idFiscal[0:1] + idFiscal[3:5] + idFiscal[7:9]).isnumeric())):
-                error()
-    else:
-        if(not(len(idFiscal) == 13 and idFiscal[2] == '-' and idFiscal[11] == '-')):
-            error()
-            if(not((idFiscal[0:1] + idFiscal[3:10] + idFiscal[12]).isnumeric())):
-                error()
-    return 1
+def controlar_proveedor_existente(id):
+    proveedor = Proveedores()
+    dato = proveedor.buscar_proveedor(id)
+    if(dato):
+        raise ProveedorYaExistente()
 
-def controlar_Tel_Movil(telefono, movil):
+def controlar_id_fiscal(lista_desplegable, id_fiscal):
+    if(lista_desplegable == 'D.N.I'):
+        if(len(id_fiscal) != 10 or id_fiscal[2] != '.' or id_fiscal[6] != '.' or 
+            (not(id_fiscal[0:1] + id_fiscal[3:5] + id_fiscal[7:9]).isnumeric())):
+            raise ErrorDeSintaxis()
 
-    if(telefono == '' and movil == ''):
-        return 1
-    else:
-        if(telefono.isnumeric() or movil.isnumeric()):
-            return 1
+    if(lista_desplegable == 'C.U.I.T'):
+        if(len(id_fiscal) != 13 or id_fiscal[2] != '-' or id_fiscal[11] != '-' or 
+            (not(id_fiscal[0:1] + id_fiscal[3:10] + id_fiscal[12]).isnumeric())):
+            raise ErrorDeSintaxis()
 
-    error()
-    
+def controlar_campo_numerico(campo):
+    if(not(campo == '')):
+        if(not(campo.isnumeric())):
+            raise TipoDeDatoNoValido()
+
 def controlar_Email(email):
     if(email):
         if(email.find("@") == -1):
-            error()
-    return 1
-
+            raise ErrorDeSintaxis()
 
 def poner_NULL(lista):
     l = []
@@ -60,25 +60,33 @@ class Mostrar_treeview(Ver_proveedor):
         Ver_proveedor.__init__(self, frame)
 
     def controlar(self, l1, l2, l3, l4, l5):
-        listaDesplegable = l1[0].get()
-        idFiscal = l1[1].get()
-        nomFiscal = l1[2].get()
-        nomComer = l1[3].get()
-        if(idFiscal and nomFiscal and nomComer): #Entrys obligatorios a llenar.
-            proveedor = Proveedores()
-            if(not(proveedor.buscar_proveedor(idFiscal))):
-                if(controlar_IdFiscal(listaDesplegable, idFiscal)):
-                    if(controlar_Tel_Movil(l4[0].get(), l4[1].get())):
-                        if(controlar_Email(l4[3].get())):
-                            listaActualizada = poner_NULL(l2 + l3 + l4 + l5)
+        lista_desplegable = l1[0].get()
+        id_fiscal = l1[1].get()
+        nombre_fiscal = l1[2].get()
+        nombre_comercial = l1[3].get()
+        
+        try:
+            controlar_campos_obligatorios(id_fiscal, nombre_fiscal, nombre_comercial)
+            controlar_proveedor_existente(id_fiscal)
+            controlar_id_fiscal(lista_desplegable, id_fiscal)
+            controlar_campo_numerico(l4[0].get(), l4[1].get())
+            controlar_email(l4[3].get())
+            lista_actualizada = poner_NULL(l2 + l3 + l4 + l5)
 
-                            proveedor.insertar_proveedor(idFiscal, nomFiscal, nomComer, listaActualizada[0], listaActualizada[1], 
-                            listaActualizada[2], listaActualizada[3], listaActualizada[4], listaActualizada[5], 
-                            listaActualizada[6], listaActualizada[7], listaActualizada[8], listaActualizada[9],
-                            listaActualizada[10], listaActualizada[11])
+            proveedor.insertar_proveedor(id_fiscal, nombre_fiscal, nombre_comercial, lista_actualizada[0], 
+            lista_actualizada[1], lista_actualizada[2], lista_actualizada[3], lista_actualizada[4], lista_actualizada[5], 
+            lista_actualizada[6], lista_actualizada[7], lista_actualizada[8], lista_actualizada[9],
+            lista_actualizada[10], lista_actualizada[11])
 
-                            self.llenar_datos()
-            else:
-                error()                   
-        else:
-            error()
+            self.llenar_datos()
+
+        except TipoDeDatoNoValido:
+            messagebox.showerror(message="Sintaxis incorrecta, use números.", title="Error")
+        except ErrorDeSintaxis:
+            messagebox.showerror(message="Error de sintaxis.", title="Error")
+        except ProveedorYaExistente:
+            messagebox.showerror(message="El proveedor ya existe.", title="Error")
+        except CampoObligatorio:
+            messagebox.showerror(message="Falta llenar un campo obligatorio.", title="Error")
+
+    
