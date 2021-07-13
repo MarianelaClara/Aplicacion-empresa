@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk 
 from tkinter import messagebox
 from Proveedores.BDProveedores import *
+from Proveedores.VerProv.verProveedor import *
 
 def borrar(l1, l2, l3, l4, l5):
     l = l1 + l2 + l3 + l4 
@@ -63,7 +64,6 @@ def poner_NULL(lista):
                 l = l + [None]
             else:
                 l = l + [valor]
-    print(l)
     return l
 
 
@@ -86,6 +86,7 @@ def guardar(l1, l2, l3, l4, l5):
                         listaActualizada[6], listaActualizada[7], listaActualizada[8], listaActualizada[9],
                         listaActualizada[10], listaActualizada[11])
 
+                        agregar_nuevo_proveedor()
         else:
             error()                   
     else:

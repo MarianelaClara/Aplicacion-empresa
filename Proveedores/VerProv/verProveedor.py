@@ -2,6 +2,8 @@ from tkinter import *
 from tkinter import ttk 
 from Proveedores.BDProveedores import *
 
+def agregar_nuevo_proveedor():
+
 def verProv(frame):
     tv = ttk.Treeview(frame, columns = ("col1", "col2", "col3", "col4", "col5"))
 
@@ -26,3 +28,5 @@ def verProv(frame):
     datos = proveedor.consultar_proveedores()
     for row in datos:
         tv.insert("", END, text = row[0], values = (row[1], row[2], row[3], row[4], row[5]))
+
+
