@@ -29,7 +29,7 @@ class Messagebox():
         mepic.place(rely = 0.35, relx = 0.1)
 
         mensaje_error = Label(messagebox, text = mensaje)
-        mensaje_error.place(rely = 0.42, relx = 0.26)
+        mensaje_error.place(rely = 0.42, relx = 0.22)
 
         #Fijo la ventana de error hasta que la cierren.
         messagebox.grab_set()

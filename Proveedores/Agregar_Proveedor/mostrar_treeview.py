@@ -82,11 +82,11 @@ class Mostrar_treeview(Ver_proveedor):
             self.mostrar_proveedor()
 
         except TipoDeDatoNoValido:
-            self.messagebox.create_widgets("Sintaxis incorrecta, use números.", "Error")
+            self.messagebox.create_widgets("Tipo de dato ingresado inválido.", "Error")
         except ErrorDeSintaxis:
-            self.messagebox.create_widgets("Error de sintaxis.", "Error")
+            self.messagebox.create_widgets("Error de sintaxis en lo ingresado.", "Error")
         except ProveedorYaExistente:
-            self.messagebox.create_widgets("El proveedor ya existe.", "Error")
+            self.messagebox.create_widgets("El proveedor ya fue ingresado.", "Error")
         except CampoObligatorio:
             self.messagebox.create_widgets("Falta llenar un campo obligatorio.", "Error")
 
