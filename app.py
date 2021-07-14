@@ -9,6 +9,7 @@ def main():
     root = Tk()
 
     root.wm_title("App")
+    
     ancho = root.winfo_screenwidth()
     alto = root.winfo_screenheight()
     x = porciento(80,ancho)
