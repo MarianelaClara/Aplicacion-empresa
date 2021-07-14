@@ -16,17 +16,20 @@ class Messagebox():
         messagebox.title(titulo)
         ancho = self.frame.winfo_screenwidth()
         alto = self.frame.winfo_screenheight()
-        x = porciento(25, ancho)
-        y = porciento(25, alto)
+        x = porciento(24, ancho)
+        y = porciento(15, alto)
         messagebox.geometry(str(x) + "x" + str(y))
         messagebox.resizable(height = 0, width = 0)
 
         #Coloco imagen de error.
         load = Image.open('error.png')
         imagen = ImageTk.PhotoImage(load)
-        mepic = Label(messagebox, image = imagen, borderwidth = 0)
+        mepic = Label(messagebox, image = imagen)
         mepic.image = imagen
-        mepic.grid(row = 0, column = 0, padx = 10)
+        mepic.place(rely = 0.35, relx = 0.1)
+
+        mensaje_error = Label(messagebox, text = mensaje)
+        mensaje_error.place(rely = 0.42, relx = 0.26)
 
         #Fijo la ventana de error hasta que la cierren.
         messagebox.grab_set()
