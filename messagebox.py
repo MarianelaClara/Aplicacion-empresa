@@ -18,7 +18,11 @@ class Messagebox():
         alto = self.frame.winfo_screenheight()
         x = porciento(24, ancho)
         y = porciento(15, alto)
-        messagebox.geometry(str(x) + "x" + str(y))
+
+        #Centro el cartel de error.
+        mover1 = (ancho - x)//2
+        mover2 = (alto - y)//2
+        messagebox.geometry('%dx%d+%d+%d' % (x, y, mover1, mover2))
         messagebox.resizable(height = 0, width = 0)
 
         #Coloco imagen de error.

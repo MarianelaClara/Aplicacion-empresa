@@ -9,12 +9,16 @@ def main():
     root = Tk()
 
     root.wm_title("App")
-    
     ancho = root.winfo_screenwidth()
     alto = root.winfo_screenheight()
     x = porciento(80,ancho)
     y = porciento(80,alto)
-    root.wm_geometry(str(x) + "x" + str(y))
+
+    #Centro la aplicacion.
+    mover1 = (ancho - x)//2
+    mover2 = (alto - y)//2
+    root.geometry('%dx%d+%d+%d' % (x, y, mover1, mover2))
+
     root.wm_resizable(height = 0, width = 0)
     estilo(root)
 
