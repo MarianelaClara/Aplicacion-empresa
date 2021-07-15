@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import ttk 
 from Proveedores.bd_proveedores import *
 
-class Ver_proveedor():
+class Mostrar_proveedores():
 
     proveedor = Proveedores()
 

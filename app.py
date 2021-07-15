@@ -1,6 +1,6 @@
 from tkinter import *
-from ventana_principal import *
-from style import *
+from Notebook.ventana_principal import *
+from Estilo_App.style import *
 
 def porciento(x,y):
     return (x*y)//100

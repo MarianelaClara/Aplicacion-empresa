@@ -1,8 +1,8 @@
 from tkinter import *
 from tkinter import ttk 
 from Proveedores.Ver_Proveedores.ver_proveedor import *
-from excepciones import *
-from messagebox import *
+from Errores.excepciones import *
+from Errores.messagebox import *
 from Proveedores.bd_proveedores import *
 
 def controlar_campos_obligatorios(campo1, campo2, campo3):
@@ -53,10 +53,10 @@ def poner_NULL(lista):
                 l = l + [valor]
     return l
 
-class Mostrar_treeview(Ver_proveedor):
+class Posible_proveedor(Mostrar_proveedores):
    
     def __init__(self, frame0, frame1):
-        Ver_proveedor.__init__(self, frame0)
+        Mostrar_proveedores.__init__(self, frame0)
         self.frame1 = frame1
         self.messagebox = Messagebox(self.frame1)
 

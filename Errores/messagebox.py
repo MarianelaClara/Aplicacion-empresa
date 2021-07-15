@@ -26,11 +26,11 @@ class Messagebox():
         messagebox.resizable(height = 0, width = 0)
 
         #Coloco imagen de error.
-        load = Image.open('error.png')
-        imagen = ImageTk.PhotoImage(load)
-        mepic = Label(messagebox, image = imagen)
-        mepic.image = imagen
-        mepic.place(rely = 0.35, relx = 0.1)
+        #load = Image.open('error.png')
+        #imagen = ImageTk.PhotoImage(load)
+        #mepic = Label(messagebox)
+        #mepic.image = imagen
+        #mepic.place(rely = 0.35, relx = 0.1)
 
         mensaje_error = Label(messagebox, text = mensaje)
         mensaje_error.place(rely = 0.42, relx = 0.22)
