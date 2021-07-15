@@ -54,6 +54,6 @@ class Agregar_proveedor():
         b = ttk.Button(self.frame1, text = "Borrar todo", command = lambda:borrar(l1, l2, l3, l4, l5))
         b.place(relx = 0.52, rely = 0.90, relwidth = 0.1, relheight = 0.08)
 
-        proveedor = Posible_proveedor(self.frame0, self.frame1)
+        proveedor = Posible_proveedor(self.frame0)
         g = ttk.Button(self.frame1, text = "Guardar", command = lambda:proveedor.controlar(l1, l2, l3, l4, l5))
         g.place(relx = 0.891, rely = 0.90, relwidth = 0.08, relheight = 0.08)

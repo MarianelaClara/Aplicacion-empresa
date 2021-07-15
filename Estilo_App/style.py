@@ -2,6 +2,8 @@ from tkinter import *
 from tkinter import ttk 
 
 def estilo(root):
+
+    #Estilo aplicacion.
     style = ttk.Style(root)
     style.theme_use('clam')
     root.configure(background = '#43444D')
@@ -27,4 +29,5 @@ def estilo(root):
     style.configure('TButton', background = '#6D6767', foreground = 'white')
     style.map('TButton', background=[('active', '#807878')])
 
-    style.configure('TMessagebox', foreground = "red")
+    #Estilo para errores.
+    style.configure('Error.TEntry',  foreground = 'black', fieldbackground = '#D67460')
