@@ -39,6 +39,7 @@ class Mostrar_proveedores():
         self.tv.config(yscrollcommand = barra.set)
         barra.config(command = self.tv.yview)
 
+        #Boton para borrar un proveedor
         boton_borrar = ttk.Button(self.frame, text = "Borrar")
         boton_borrar.place(relx = 0.05, rely = 0.89, relheight = 0.08)
 
