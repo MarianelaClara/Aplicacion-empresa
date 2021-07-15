@@ -13,7 +13,7 @@ class Mostrar_proveedores():
 
     def create_widgets(self):  
         frame_treeview = ttk.Frame(self.frame)
-        frame_treeview.place(relx = 0.05, rely = 0.05, relwidth = 0.9, relheight = 0.9)
+        frame_treeview.place(relx = 0.05, rely = 0.05, relwidth = 0.9, relheight = 0.8)
         
         self.tv = ttk.Treeview(frame_treeview, columns = ("col1", "col2", "col3", "col4", "col5"))
         
@@ -38,6 +38,9 @@ class Mostrar_proveedores():
         barra.place(relx = 0.98, relwidth = 0.02, relheight = 1)
         self.tv.config(yscrollcommand = barra.set)
         barra.config(command = self.tv.yview)
+
+        boton_borrar = ttk.Button(self.frame, text = "Borrar")
+        boton_borrar.place(relx = 0.05, rely = 0.89, relheight = 0.08)
 
     def llenar_datos(self): #Se cargan en el Treeview los datos de proveedores anteriormente guardados.
         datos = self.proveedor.consultar_proveedores()

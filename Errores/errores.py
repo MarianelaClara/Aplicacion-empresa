@@ -21,5 +21,3 @@ class Error():
                 lista_entries[0].insert(END, 'Error de escritura')          
             else:
                 lista_entries[0].insert(END, 'Tipos de datos incorrectos')
-
-    
