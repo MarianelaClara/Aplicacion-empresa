@@ -11,9 +11,12 @@ class Ver_proveedor():
         self.create_widgets()
         self.llenar_datos()
 
-    def create_widgets(self):
-        self.tv = ttk.Treeview(self.frame, columns = ("col1", "col2", "col3", "col4", "col5"))
-
+    def create_widgets(self):  
+        frame_treeview = ttk.Frame(self.frame)
+        frame_treeview.place(relx = 0.05, rely = 0.05, relwidth = 0.9, relheight = 0.9)
+        
+        self.tv = ttk.Treeview(frame_treeview, columns = ("col1", "col2", "col3", "col4", "col5"))
+        
         self.tv.column("#0", width = 7, anchor = CENTER)
         self.tv.column("col1", width = 80, anchor = CENTER)
         self.tv.column("col2", width = 80, anchor = CENTER)
@@ -28,7 +31,13 @@ class Ver_proveedor():
         self.tv.heading("col4", text = "E-mail", anchor = CENTER)
         self.tv.heading("col5", text = "D.N.I./C.U.I.T.", anchor = CENTER)
         
-        self.tv.place(relx = 0.05, rely = 0.05, relwidth = 0.9, relheight = 0.9)
+        self.tv.place(relwidth = 0.98, relheight = 1)
+
+        #Scrollbar
+        barra = ttk.Scrollbar(frame_treeview, orient = VERTICAL)
+        barra.place(relx = 0.98, relwidth = 0.02, relheight = 1)
+        self.tv.config(yscrollcommand = barra.set)
+        barra.config(command = self.tv.yview)
 
     def llenar_datos(self): #Se cargan en el Treeview los datos de proveedores anteriormente guardados.
         datos = self.proveedor.consultar_proveedores()
