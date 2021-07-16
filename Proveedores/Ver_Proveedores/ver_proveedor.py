@@ -1,6 +1,18 @@
 from tkinter import *
 from tkinter import ttk 
 from Proveedores.bd_proveedores import *
+from Proveedores.Ver_Proveedores.cartel import *
+
+def borrar(treeview, frame):
+    seleccionado = treeview.focus()
+    cartel = Messageboxs(frame)
+    clave = treeview.item(seleccionado, 'text')
+
+    if(clave == ''):
+        cartel.crear_cartel("Debes seleccionar un proveedor primero.", "Eliminar", "warning")
+    else:
+        respuesta = cartel.crear_cartel("Deseas eliminar el proveedor seleccionado?", "Eliminar", "pregunta")
+        valores = treeview.item(seleccionado, 'values')
 
 class Mostrar_proveedores():
 
@@ -40,7 +52,7 @@ class Mostrar_proveedores():
         barra.config(command = self.tv.yview)
 
         #Boton para borrar un proveedor
-        boton_borrar = ttk.Button(self.frame, text = "Borrar")
+        boton_borrar = ttk.Button(self.frame, text = "Borrar", command = lambda:borrar(self.tv, self.frame))
         boton_borrar.place(relx = 0.05, rely = 0.89, relheight = 0.08)
 
     def llenar_datos(self): #Se cargan en el Treeview los datos de proveedores anteriormente guardados.
@@ -52,5 +64,3 @@ class Mostrar_proveedores():
         for item in self.tv.get_children():
             self.tv.delete(item)
         self.llenar_datos()
-
-

@@ -26,8 +26,12 @@ def estilo(root):
     style.map('TCombobox', selectforeground=[('readonly', 'white')])
     style.map('TCombobox', foreground=[('readonly', 'white')])
  
-    style.configure('TButton', background = '#6D6767', foreground = 'white')
+    style.configure('TButton', background = '#6D6767', foreground = 'white', anchor = 'center')
     style.map('TButton', background=[('active', '#807878')])
 
     #Estilo para errores.
     style.configure('Error.TEntry',  foreground = 'black', fieldbackground = '#D67460')
+
+    #Estilo para el cartel de eliminar un proveedor.
+    style.configure('Cartel.TButton', background = '#C3C5C9', foreground = 'black')
+    style.map('Cartel.TButton',background=[('active', '#CCCED1')])
