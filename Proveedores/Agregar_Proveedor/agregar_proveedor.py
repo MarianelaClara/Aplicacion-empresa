@@ -1,10 +1,10 @@
 from tkinter import *
 from tkinter import ttk 
-from Proveedores.Agregar_Proveedor.formulario_empresa import *
-from Proveedores.Agregar_Proveedor.formulario_domicilio import *
-from Proveedores.Agregar_Proveedor.formulario_datos_bancarios import *
-from Proveedores.Agregar_Proveedor.formulario_contacto import *
-from Proveedores.Agregar_Proveedor.formulario_observaciones import *
+from Formularios.formulario_empresa import *
+from Formularios.formulario_domicilio import *
+from Formularios.formulario_datos_bancarios import *
+from Formularios.formulario_contacto import *
+from Formularios.formulario_observaciones import *
 from Proveedores.Agregar_Proveedor.mostrar_treeview import *
 
 def borrar(l1, l2, l3, l4, l5):
