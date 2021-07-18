@@ -1,7 +1,7 @@
 from tkinter import ttk
 from Proveedores.Agregar_Proveedor.agregar_proveedor import *
 
-class Ventana():
+class Notebook():
        
     def __init__(self, x, y):
         self.x = x

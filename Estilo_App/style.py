@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk 
+from tkinter.font import Font
 
 def estilo(root):
 
@@ -25,7 +26,8 @@ def estilo(root):
     style.map('TCombobox', selectbackground=[('readonly', '#6D6767')])
     style.map('TCombobox', selectforeground=[('readonly', 'white')])
     style.map('TCombobox', foreground=[('readonly', 'white')])
- 
+    style.configure('Cliente.TCombobox',  postoffset=(0,0,340,0))
+
     style.configure('TButton', background = '#6D6767', foreground = 'white', anchor = 'center')
     style.map('TButton', background=[('active', '#807878')])
 

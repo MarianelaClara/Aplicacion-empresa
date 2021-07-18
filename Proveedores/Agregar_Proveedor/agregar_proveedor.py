@@ -25,30 +25,16 @@ class Agregar_proveedor():
         self.create_widgets()
 
     def create_widgets(self):
-        menu1 = LabelFrame(self.frame1, text = "EMPRESA", background = "#4B4C56", foreground = "#ECECEF")
-        menu1.place(relx = 0.03, rely = 0.02, relwidth = 0.45, relheight = 0.30)
-        
-        menu2 = LabelFrame(self.frame1, text = "DOMICILIO", background = "#4B4C56", foreground = "#ECECEF")
-        menu2.place(relx = 0.03, rely = 0.35, relwidth = 0.45, relheight = 0.30)
-        
-        menu3 = LabelFrame(self.frame1, text = "DATOS BANCARIOS", background = "#4B4C56", foreground = "#ECECEF")
-        menu3.place(relx = 0.03, rely = 0.68, relwidth = 0.45, relheight = 0.30)
-        
-        menu4 = LabelFrame(self.frame1, text = "CONTACTO", background = "#4B4C56", foreground = "#ECECEF")
-        menu4.place(relx = 0.52, rely = 0.02, relwidth = 0.45, relheight = 0.42)
 
-        menu5 = LabelFrame(self.frame1, text = "OBSERVACIONES", background = "#4B4C56", foreground = "#ECECEF")
-        menu5.place(relx = 0.52, rely = 0.46, relwidth = 0.45, relheight = 0.4)
-
-        formulario_empresa = Formulario_empresa(menu1)
+        formulario_empresa = Formulario_empresa(self.frame1, 0.03, 0.02, 0.45, 0.30, 'p')
         l1 = formulario_empresa.devolver_valores()
-        formulario_domicilio = Formulario_domicilio(menu2)
+        formulario_domicilio = Formulario_domicilio(self.frame1, 0.03, 0.35, 0.45, 0.30)
         l2 = formulario_domicilio.devolver_valores()
-        formulario_datos_bancarios = Formulario_datos_bancarios(menu3)
+        formulario_datos_bancarios = Formulario_datos_bancarios(self.frame1, 0.03, 0.68, 0.45, 0.30)
         l3 = formulario_datos_bancarios.devolver_valores()
-        formulario_contacto = Formulario_contacto(menu4)
+        formulario_contacto = Formulario_contacto(self.frame1, 0.52, 0.02, 0.45, 0.42)
         l4 = formulario_contacto.devolver_valores()
-        formulario_observaciones = Formulario_observaciones(menu5)
+        formulario_observaciones = Formulario_observaciones(self.frame1, 0.52, 0.46, 0.45, 0.4)
         l5 = formulario_observaciones.devolver_valores()
         
         b = ttk.Button(self.frame1, text = "Borrar todo", command = lambda:borrar(l1, l2, l3, l4, l5))

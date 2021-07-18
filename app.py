@@ -1,5 +1,5 @@
 from tkinter import *
-from Notebook.ventana_principal import *
+from Notebook.notebook import *
 from Estilo_App.style import *
 
 def porciento(x,y):
@@ -22,7 +22,7 @@ def main():
     root.wm_resizable(height = 0, width = 0)
     estilo(root)
 
-    app = Ventana(x, y) 
+    app = Notebook(x, y) 
 
     root.mainloop()
 
