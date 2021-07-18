@@ -43,14 +43,12 @@ class Proveedores:
         self.cnn.commit()    
         cur.close()  
 
-    def elimina_pais(self,Id):
+    def eliminar_proveedor(self, Id):
         cur = self.cnn.cursor()
-        sql="DELETE FROM countries WHERE Id = '{}'".format(Id)
+        sql = "DELETE FROM Proveedores WHERE Id = '{}'".format(Id)
         cur.execute(sql)
-        n=cur.rowcount
         self.cnn.commit()    
-        cur.close()
-        return n   
+        cur.close() 
 
     def modifica_pais(self,Id, ISO3, CountryName, Capital, CurrencyCode):
         cur = self.cnn.cursor()

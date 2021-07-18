@@ -20,7 +20,7 @@ class Ventana():
         notebook.add(pestaña0, text = "Ver proveedores")
         notebook.add(pestaña1, text = "Agregar proveedor")
 
-        ver_proveedor = Mostrar_proveedores(pestaña0)  
+        ver_proveedor = Modificar_treeview(pestaña0)  
         agregar_proveedor = Agregar_proveedor(pestaña1, pestaña0)
 
             

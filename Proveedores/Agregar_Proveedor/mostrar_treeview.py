@@ -81,10 +81,10 @@ def reponer_estilos(lista):
     for entry in lista_entries:
         entry.configure(style = 'TEntry')
 
-class Posible_proveedor(Mostrar_proveedores):
+class Posible_proveedor(Modificar_treeview):
    
     def __init__(self, frame0):
-        Mostrar_proveedores.__init__(self, frame0)
+        Modificar_treeview.__init__(self, frame0)
         self.error = Error()
 
     def controlar(self, f1, f2, f3, f4, f5):
